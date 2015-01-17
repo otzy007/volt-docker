@@ -14,5 +14,16 @@ RUN curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSI
   && tar -xvf mongo.tgz -C /usr/local --strip-components=1 \
   && rm mongo.tgz*
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+ONBUILD COPY Gemfile /usr/src/app/
+ONBUILD COPY Gemfile.lock /usr/src/app/
+ONBUILD RUN bundle install
+
+ONBUILD COPY . /usr/src/app
+
+EXPOSE 3000
+
 CMD mongod & \
   bundle exec thin start -p 3000 -e production
