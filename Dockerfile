@@ -14,4 +14,4 @@ RUN curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSI
   && tar -xvf mongo.tgz -C /usr/local --strip-components=1 \
   && rm mongo.tgz*
 
-ONBUILD CMD sh run.sh
+CMD sh run.sh
