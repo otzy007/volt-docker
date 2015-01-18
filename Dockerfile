@@ -17,6 +17,7 @@ RUN curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSI
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+ONBUILD RUN gem install thin
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
 ONBUILD RUN bundle install
