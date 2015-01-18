@@ -22,5 +22,5 @@ docker run --name my-volt-app -p 3000:3000 -d my-volt-app
 You can then go to [http://localhost:3000](http://localhost:3000) in your browser
 
 ## The stack
-* Ruby 2.1
+* Ruby 2.2
 * MongoDB 2.6.7
