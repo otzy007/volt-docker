@@ -9,7 +9,13 @@ ENV MONGO_VERSION 2.6.7
 VOLUME /data/db
 
 RUN apt-get update
-RUN apt-get install --yes nodejs
+RUN apt-get install --yes nodejs locales
+
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+RUN locale-gen en_US.UTF-8
+ENV LANG "en_US.UTF-8"
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 RUN curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz" -o mongo.tgz \
   && curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz.sig" -o mongo.tgz.sig \
