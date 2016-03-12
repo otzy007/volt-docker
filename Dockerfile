@@ -8,6 +8,9 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys $MONGO_RELEASE_FINGERPRINT
 ENV MONGO_VERSION 2.6.7
 VOLUME /data/db
 
+RUN apt-get update
+RUN apt-get install --yes nodejs
+
 RUN curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz" -o mongo.tgz \
   && curl -SL "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz.sig" -o mongo.tgz.sig \
   && gpg --verify mongo.tgz.sig \
